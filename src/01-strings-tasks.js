@@ -329,7 +329,7 @@ function getCardId(value) {
     '10♠',
     'J♠',
     'Q♠',
-    'K♠'
+    'K♠',
   ];
   return card.indexOf(value);
 }
@@ -349,5 +349,5 @@ module.exports = {
   getRectangleString,
   encodeToRot13,
   isString,
-  getCardId
+  getCardId,
 };

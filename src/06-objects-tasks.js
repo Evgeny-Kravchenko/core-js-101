@@ -25,7 +25,7 @@ function Rectangle(width, height) {
     height,
     getArea() {
       return this.width * this.height;
-    }
+    },
   };
 }
 
@@ -178,20 +178,20 @@ const cssSelectorBuilder = {
   error(newi) {
     if (this.i > newi) {
       throw new Error(
-        'Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element'
+        'Selector parts should be arranged in the following order: element, id, class, attribute, pseudo-class, pseudo-element',
       );
     }
     if (this.i === newi && (newi === 1 || newi === 2 || newi === 6)) {
       throw new Error(
-        'Element, id and pseudo-element should not occur more then one time inside the selector'
+        'Element, id and pseudo-element should not occur more then one time inside the selector',
       );
     }
-  }
+  },
 };
 
 module.exports = {
   Rectangle,
   getJSON,
   fromJSON,
-  cssSelectorBuilder
+  cssSelectorBuilder,
 };
