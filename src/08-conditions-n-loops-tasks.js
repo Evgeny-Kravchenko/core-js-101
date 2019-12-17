@@ -162,8 +162,11 @@ function doRectanglesOverlap(rect1, rect2) {
  *   { center: { x:0, y:0 }, radius:10 },  { x:10, y:10 }   => false
  *
  */
-function isInsideCircle(/* circle, point */) {
-  throw new Error('Not implemented');
+function isInsideCircle(circle, point) {
+  if ((point.x - circle.center.x) ** 2 + (point.y - circle.center.y) ** 2 < circle.radius ** 2) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -177,8 +180,16 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  let arr = str.split('');
+  arr = arr.filter((itemA, indexA, array) => {
+    let check = true;
+    array.forEach((itemB, indexB) => {
+      if (itemA === itemB && indexA !== indexB) check = false;
+    });
+    return check;
+  });
+  return arr.length === 0 ? null : arr[0];
 }
 
 /**
@@ -203,8 +214,14 @@ function findFirstSingleChar(/* str */) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  const min = Math.min(a, b);
+  const max = Math.max(a, b);
+  if (isStartIncluded === false && isEndIncluded === false) return `(${min}, ${max})`;
+  if (isStartIncluded === true && isEndIncluded === true) return `[${min}, ${max}]`;
+  if (isStartIncluded === false && isEndIncluded === true) return `(${min}, ${max}]`;
+  if (isStartIncluded === true && isEndIncluded === false) return `[${min}, ${max})`;
+  return '';
 }
 
 /**
@@ -219,8 +236,8 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 /**
@@ -235,8 +252,8 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  return num.toString().split('').reverse().join('');
 }
 
 /**
