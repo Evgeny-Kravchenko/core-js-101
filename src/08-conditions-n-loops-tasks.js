@@ -430,8 +430,16 @@ function getCommonDirectoryPath(pathes) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  let result = new Array(m1.length).fill(new Array(m2[0].length).fill(0));
+  result = result.map((itemA, indexA) => itemA.map((itemB, indexB) => {
+    let value = 0;
+    m1[indexA].forEach((itemC, indexC) => {
+      value += itemC * m2[indexC][indexB];
+    });
+    return value;
+  }));
+  return result;
 }
 
 /**
@@ -464,8 +472,26 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  const p11 = position[0][0];
+  const p12 = position[0][1];
+  const p13 = position[0][2];
+  const p21 = position[1][0];
+  const p22 = position[1][1];
+  const p23 = position[1][2];
+  const p31 = position[2][0];
+  const p32 = position[2][1];
+  const p33 = position[2][2];
+
+  if (p11 === p12 && p12 === p13 && p11) return p11;
+  if (p21 === p22 && p22 === p23 && p21) return p21;
+  if (p31 === p32 && p32 === p33 && p31) return p31;
+  if (p11 === p21 && p21 === p31 && p11) return p11;
+  if (p12 === p22 && p22 === p32 && p12) return p12;
+  if (p13 === p23 && p23 === p33 && p13) return p13;
+  if (p11 === p22 && p22 === p33 && p11) return p11;
+  if (p31 === p22 && p22 === p13 && p31) return p31;
+  return undefined;
 }
 
 module.exports = {
